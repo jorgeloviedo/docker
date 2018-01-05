@@ -1,179 +1,131 @@
-# Dillinger
+# _Python Automation Base._
+_The aim of the '''Python Automation Framework''' is to provide a set of tools and best practices to write automation tests scripts regarding to UI and Services. In the following sections the tools and practices will be described as well as a guide to create a script._
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+#### _Version._
+_2.0.0._
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
+#### _Install._
+_git clone https://jorgeloviedo@bitbucket.org/jorgeloviedo/automation.git automation_
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+_The project provides tutorials and examples. Therefore, it should not be installed. To prepare the local installation, use the following command to install all prerequisites:_
 
-# New Features!
+* _[Upgrading Pip]_ - _Pip is already installed, but you'll need to upgrade pip._
+* _[Virtual Environment]_ - _Creating Virtual Environments._
+* _[Requirements Files]_ - _The common scenario is to install from PyPI using Requirement Specifiers._
 
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+        pip install -r requirements.txt
 
+#### _Directory Layout  Structure._
+![Layout](images/layout.png)
 
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
+* _[Behave Layout Variations]_ - _Feature Testing Layout._
 
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
+#### _Page Object Design Pattern._
+_Page Object is a Design Pattern which has become popular in test automation for enhancing test maintenance and reducing code duplication. A page object is an object-oriented class that serves as an interface to a page of your AUT. The tests then use the methods of this page object class whenever they need to interact with the UI of that page. The benefit is that if the UI changes for the page, the tests themselves don’t need to change, only the code within the page object needs to change. Subsequently all changes to support that new UI are located in one place._
 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+* _[Best Practices]_ - _Best Practices._
+* _[Page Object Design]_ - _Page Object Design Example._
 
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
+#### _Library Information._
+* _[Setuptools]_ - _Easily download, build, install, upgrade, and uninstall Python packages._
+* _[Pip]_ - _Tool for installing Python packages._
+* _[Behave]_ - _Framework behaviour-driven development._
+* _[Pep8]_ - _Python style guide checker._
+* _[Flake8]_ - _The modular source code checker: pep8, pyflakes and co._
+* _[Hamcrest]_ - _Framework for writing matcher objects._
+* _[Selenium]_ - _A browser automation framework and ecosystem._
 
-### Tech
+#### _Logging Levels._
+_The numeric values of logging levels are given in the following table. These are primarily of interest if you want to define your own levels, and need them to have specific values relative to the predefined levels. If you define a level with the same numeric value, it overwrites the predefined value; the predefined name is lost._
 
-Dillinger uses a number of open source projects to work properly:
+* _[Logging Levels]_ - _Logging Levels Details._
 
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](http://breakdance.io) - HTML to Markdown converter
-* [jQuery] - duh
+#### _Expected Conditions._
+_There are some common conditions that are frequent when automating web browsers. Listed below are Implementations of each. Selenium Python binding provides some convienence methods so you don’t have to code an expected_condition class yourself or create your own utility package for them._
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
+* _[Expected Conditions]_ - _Expected Conditions Details._
 
-### Installation
+#### _LogRecord attributes._
+_The LogRecord has a number of attributes, most of which are derived from the parameters to the constructor. (Note that the names do not always correspond exactly between the LogRecord constructor parameters and the LogRecord attributes.) These attributes can be used to merge data from the record into the format string. The following table lists (in alphabetical order) the attribute names, their meanings and the corresponding placeholder in a %-style format string._
 
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
+* _[LogRecord Attributes]_ - _LogRecord attributes Details._
 
-Install the dependencies and devDependencies and start the server.
+#### _How run the features._
+_In the automation directory (where the file behave.ini exist) run the file of features required._
 
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
-```
+_Example._
 
-For production environments...
+    user@pcname /d/automation (master)
+    $ behave -v -D foo=bar web_section/features/name.feature
 
-```sh
-$ npm install --production
-$ NODE_ENV=production node app
-```
+_Define user-specific data for the config.userdata dictionary._
 
-### Plugins
+    Example: -D foo=bar to store it in config.userdata["foo"].
 
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+_For more information search into in configuration.py file._
 
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md] [PlDb] |
-| Github | [plugins/github/README.md] [PlGh] |
-| Google Drive | [plugins/googledrive/README.md] [PlGd] |
-| OneDrive | [plugins/onedrive/README.md] [PlOd] |
-| Medium | [plugins/medium/README.md] [PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md] [PlGa] |
+#### _How Use Pip._
+    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 
+#### _How User Flake8._
+    flake8 common
+    flake8 web
+    flake8 web --ignore E501
+    flake8 web --ignore E501,F811
 
-### Development
+#### _More About Selenium._
+* _[SeleniumHQ]_ - _Encapsulating a variety of tools and libraries enabling web browser automation._
 
-Want to contribute? Great!
+#### _More About Behave._
+* _[Using]_ - _Command-Line Arguments._
+* _[Gherkin Language]_ - _Gherkin language support._
+* _[Spoken Languages]_ - _Supports over 60 spoken languages and the number is steadily growing._
+* _[Formatters and Reporters]_ - _Two different concepts for reporting results of a test run._
+* _[Pdf Documentation]_ - _Benno Rice, Richard Jones and Jens Engel (Release 1.2.6.dev0)._
+* _[Predefined Data Types]_ - _Parse types list supported in step definitions without registration._
 
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-```sh
-$ node app
-```
-
-Second Tab:
-```sh
-$ gulp watch
-```
-
-(optional) Third:
-```sh
-$ karma test
-```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version}
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
+#### _Driver Information._
+* _[Chromium]_ - _List of Command Line Switches._
+* _[Chrome Driver]_ - _Storage._
+* _[Chrome Driver Setting]_ - _Capabilities & ChromeOptions._
+* _[Desired Capabilities]_ - _Capabilities & ChromeOptions._
+* _[Marionette]_ - _Marionette, the next generation of FirefoxDriver._
 
 
-### Todos
+#### _License._
+_Copyright (c) 2016 Vates._
 
- - Write MORE Tests
- - Add Night Mode
+_Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:_ 
 
-License
-----
+_The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software._
 
-MIT
+_THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE._
 
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+   [Upgrading Pip]: <https://pip.pypa.io/en/stable/installing/#upgrading-pip>
+   [Virtual Environment]: <https://packaging.python.org/installing/#creating-and-using-virtual-environments>
+   [Pip]: <https://pypi.python.org/pypi/pip>
+   [Behave]: <https://github.com/behave/behave>
+   [Setuptools]: <https://bitbucket.org/pypa/setuptools>
+   [Pep8]: <https://pypi.python.org/pypi/pep8>
+   [flake8]: <https://pypi.python.org/pypi/flake8>
+   [Hamcrest]: <http://hamcrest.org/>
+   [Selenium]: <http://docs.seleniumhq.org/docs/>
+   [Page Object Design]: <http://www.seleniumhq.org/docs/06_test_design_considerations.jsp#page-object-design-pattern>
+   [Behave Layout Variations]: <http://pythonhosted.org/behave/gherkin.html#layout-variations>
+   [Logging Levels]: <https://docs.python.org/2/library/logging.html#logging-levels>
+   [Requirements Files]: <https://pip.pypa.io/en/latest/user_guide/#requirements-files>
+   [Expected Conditions]: <http://selenium-python.readthedocs.org/waits.html#explicit-waits>
+   [LogRecord Attributes]: <https://docs.python.org/2/library/logging.html#logrecord-attributes>
+   [Best Practices]: <http://www.slisenko.net/2014/06/22/best-practices-in-test-automation-using-selenium-webdriver/>
+   [Using]: <http://pythonhosted.org/behave/behave.html#configuration-file>
+   [Gherkin Language]: <https://github.com/mackoj/language-gherkin-i18n>
+   [Spoken Languages]: <https://github.com/cucumber/cucumber/wiki/Spoken-languages>
+   [Chromium]: <http://peter.sh/experiments/chromium-command-line-switches/>
+   [Chrome Driver]: <http://chromedriver.storage.googleapis.com/index.html>
+   [Chrome Driver Setting]: <https://sites.google.com/a/chromium.org/chromedriver/capabilities>
+   [Desired Capabilities]: <https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities>
+   [SeleniumHQ]: <https://github.com/SeleniumHQ/selenium/>
+   [Formatters and Reporters]: <https://pythonhosted.org/behave/formatters.html>
+   [Pdf Documentation]: <https://media.readthedocs.org/pdf/behave/latest/behave.pdf>
+   [Predefined Data Types]: <https://pythonhosted.org/behave/parse_builtin_types.html>
+   [Marionette]: <https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver>
