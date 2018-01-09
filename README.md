@@ -2,7 +2,7 @@
 _The aim of the '''Python Automation Framework''' is to provide a set of tools and best practices to write automation tests scripts regarding to UI and Services. In the following sections the tools and practices will be described as well as a guide to create a script._
 
 #### _Version._
-_2.0.1_
+_2.0.2_
 
 #### _Install._
 _git clone https://jorgeloviedo@bitbucket.org/jorgeloviedo/automation.git automation_
